@@ -1,27 +1,86 @@
-# Frontend
+# Find the Fugitive Game Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+An interactive web game where police officers compete to catch a fugitive across different cities using various vehicles.
 
-## Development server
+## Live Demo
+[Play the Game](https://gk-2211.github.io/cop-chase-game-fe/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Game Overview
+- Multiple police officers compete to catch a fugitive
+- Each officer must choose a city and a vehicle
+- Vehicle selection is limited by available count and range
+- The first officer to reach the fugitive's location wins
 
-## Code scaffolding
+## Features
+- Real-time city and vehicle selection
+- Distance calculations and range validations
+- Multiple police officers coordination
+- Interactive game results display
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tech Stack
+- Angular 16+
+- TypeScript
+- Angular Material UI
+- RxJS
+- HTTP Client
 
-## Build
+## Project Structure
+```
+frontend/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   ├── services/
+│   │   │   └── game.service.ts
+│   │   └── interfaces/
+│   ├── assets/
+│   └── environments/
+├── package.json
+└── angular.json
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## API Integration
+The frontend communicates with the backend API at:
+`https://game-gilt-rho.vercel.app/api`
 
-## Running unit tests
+### Available Endpoints:
+- GET `/cities` - Available cities list
+- GET `/vehicles` - Available vehicles list
+- GET `/cops` - Police officers list
+- POST `/start-game` - Initialize game
+- POST `/cop-selection` - Submit officer's choices
+- POST `/game/result` - Get game outcome
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Local Development Setup
 
-## Running end-to-end tests
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd frontend
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Install dependencies:
+```bash
+npm install
+```
 
-## Further help
+3. Start development server:
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. Navigate to `http://localhost:4200/`
+
+## Building for Production
+
+```bash
+ng build --configuration production
+```
+
+## Deployment
+The application is deployed using GitHub Pages.
+
+To deploy updates:
+```bash
+ng deploy --base-href=/cop-chase-game-fe/
+```
